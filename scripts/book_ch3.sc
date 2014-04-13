@@ -263,7 +263,7 @@ Synth(\samplePlayer, [
 		dur.postln;
 		~sample = Synth(\samplePlayer, [
 			\out, 0,
-			\buf, ~buffers[2],
+			\buf, ~buffers[3],
 			\at, 0.1,
 			\rel, 0.05,
 			\pSpeed, 0.5
@@ -282,3 +282,20 @@ Pbind(\freq, Prand([300, 500, 231.2, 399.2], 30), \dur, 0.1).play;
 ~player = ~gest1.play;
 ~player.stream = Pbind(\instrument, \samplePlayer, \dur, 1/8, \rate, Pxrand([1/2, 1, 2/3, 4], inf), \rel, 0.9).asStream;
 ~player.stop;
+
+~gest2 = Pbind(\instrument, \samplePlayer, \dur, Pgeom(0.01, 1.1707, 20), \rel, 1.9);
+~gest2.play;
+
+Pbind(\instrument, \samplePlayer, \dur, Pseq([ Pgeom(0.01, 1.1707, 20), Pgeom(0.01, 0.93, 20) ], 1), \rel, 1.9, \pSpeed, 0.5).play;
+Pbind(\instrument, \samplePlayer, \dur, Pseq([ Pgeom(0.01, 1.1707, 20), Pgeom(0.01, 0.93, 20) ], 1), \rate, Pxrand([ 1/2, 1, 2/3, 4 ], inf), \rel, 1.9, \pSpeed, 0.5).play;
+
+~rhythm1 = Pseq([ 1/4, 1/4, 1/8, 1/12, 1/24, nil ]);
+~gest3 = Pdef(\a, Pbind(\instrument, \samplePlayer, \dur, ~rhythm1, \rel, 1.9, \pSpeed, 0.5));
+~gest3.play;
+
+~rhythm1 = Pseq([ 1/64, 1/64, 1/64, 1/32, 1/32, 1/32, 1/32, 1/24, 1/16, 1/12, nil ]);
+
+~gest4 = Pdef(\a, Pbind(\instrument, \samplePlayer, \att, 0.5, \rel, 3, \lev, { rrand(0.1, 0.2) }, \dur, 0.05, \rate, Pseq([ Pbrown(0.8, 1.01, 0.01, 20) ])));
+~gest4.play;
+
+
