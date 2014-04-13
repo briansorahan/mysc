@@ -1,0 +1,4 @@
+mysc
+====
+
+personal supercollider stuff
