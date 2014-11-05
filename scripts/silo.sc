@@ -1,6 +1,6 @@
 s = Server.local.boot;
 
-b = Buffer.read(s, "/Users/brian/Audio/freesound/kalimba_mono.wav");
+b = Buffer.read(s, "~/mysc/kalimba_mono.wav".standardizePath);
 
 (
 play({
@@ -15,5 +15,3 @@ play({
 	)
 });
 )
-
-
